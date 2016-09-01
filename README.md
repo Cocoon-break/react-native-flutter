@@ -51,4 +51,5 @@ there is one way to use flutter,calling api
 |position|object|false|the animate end position,it must be contain top,left,right,bottom,like this {top:100,left:20}|
 |duration|number|false|the duration of the animate for flutter view|
 |onPress|func|false|when you onPress flutter,the function will execute|
-|animateEndCallBack|func|false|the animate end callback|
+|onAnimationEnd|func|false|the animate end callback|
+|animation|string|false|animation reference [react-native-animatable](https://github.com/oblador/react-native-animatable)|

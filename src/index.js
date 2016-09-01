@@ -3,16 +3,12 @@
  */
 import React,{Component,PropTypes} from 'react'
 import {
-    View,
-    Text,
-    Image,
     StyleSheet,
-    Animated,
     TouchableWithoutFeedback,
-    Dimensions
 } from 'react-native'
 import RootSiblings from 'react-native-root-siblings';
-const SCREEN = Dimensions.get('window')
+import {View} from 'react-native-animatable';
+
 const positions = {
     TOP: 20,
     BOTTOM: -20,
@@ -25,46 +21,30 @@ class FlutterView extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            flutterAnimate: new Animated.Value(0),
-        }
         this.container = this.container.bind(this)
     }
 
     static propTypes = {
-        ...View.propTypes,
         position: PropTypes.object,
         onPress: PropTypes.func,
         duration: PropTypes.number,
-        animateEndCallBack:PropTypes.func,
-        container:PropTypes.element
+        container: PropTypes.element.isRequired,
+        animation:PropTypes.string,
+        onAnimationEnd:PropTypes.func
     };
     static defaultProps = {
         position: {top: positions.TOP, left: positions.LEFT},
-        duration: 1000
-    }
-
-    componentDidMount() {
-        const {animateEndCallBack}=this.props
-        this._inAnim(() => {
-            if(animateEndCallBack){
-                animateEndCallBack()
-            }
-        });
+        animation:'bounceInRight',
+        onAnimationEnd:()=>{},
+        duration:1000
     }
 
     container() {
-        const transformX = [{
-            translateX: this.state.flutterAnimate.interpolate({
-                inputRange: [0, 1],
-                outputRange: [SCREEN.width, 0]
-            }),
-        }]
+        const {onPress,animation,onAnimationEnd,duration,container:containerView} = this.props
 
-        const onPress = this.props.onPress
-        let container = <Animated.View style={{transform:transformX}}>
-            {this.props.container}
-        </Animated.View>
+        let container = <View animation={animation} onAnimationEnd={onAnimationEnd} duration={duration}>
+            {containerView}
+        </View>
 
         if (onPress) {
             container = <TouchableWithoutFeedback onPress={onPress}>
@@ -80,24 +60,6 @@ class FlutterView extends Component {
         return <View style={[styles.defaultStyle,position]}>
             {this.container()}
         </View>
-    }
-
-    _inAnim(callback) {
-        Animated.sequence([
-            Animated.timing(this.state.flutterAnimate, {
-                toValue: 1,
-                duration: 1000,
-            })
-        ]).start(() => callback && callback());
-    }
-
-    _outAnim(callback) {
-        Animated.sequence([
-            Animated.timing(this.state.flutterAnimate, {
-                toValue: 0,
-                duration: 1000,
-            })
-        ]).start(() => callback && callback());
     }
 }
 

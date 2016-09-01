@@ -1,6 +1,6 @@
 {
   "name": "react-native-flutter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "a component flutter on react native",
   "main": "src/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Cocoon-break/react-native-flutter#readme",
   "dependencies": {
-    "react-native-root-siblings": "^1.0.8"
+    "react-native-root-siblings": "^1.0.8",
+    "react-native-animatable": "^0.6.1"
   }
 }
