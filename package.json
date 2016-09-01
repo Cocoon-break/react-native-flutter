@@ -19,8 +19,8 @@
   "bugs": {
     "url": "https://github.com/Cocoon-break/react-native-flutter/issues"
   },
-  "homepage": "https://github.com/Cocoon-break/react-native-flutter#readme"
+  "homepage": "https://github.com/Cocoon-break/react-native-flutter#readme",
   "dependencies": {
-        "react-native-root-siblings": "^1.0.7"
-    }
+    "react-native-root-siblings": "^1.0.8"
+  }
 }
