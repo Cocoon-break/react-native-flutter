@@ -1,0 +1,26 @@
+{
+  "name": "react-native-flutter",
+  "version": "0.1.0",
+  "description": "a component flutter on react native",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cocoon-break/react-native-flutter.git"
+  },
+  "keywords": [
+    "react-native-flutter",
+    "flutter"
+  ],
+  "author": "concoon-break",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cocoon-break/react-native-flutter/issues"
+  },
+  "homepage": "https://github.com/Cocoon-break/react-native-flutter#readme"
+  "dependencies": {
+        "react-native-root-siblings": "^1.0.7"
+    }
+}
