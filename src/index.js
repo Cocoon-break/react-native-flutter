@@ -72,13 +72,15 @@ const styles = StyleSheet.create({
 class Flutter extends Component {
     static displayName = 'Flutter'
 
-    static move = (options = {})=> {
-        return new RootSiblings(<FlutterView {...options}/>)
+    _flutter = null
+
+    static onMove = (options = {})=> {
+        this._flutter = new RootSiblings(<FlutterView {...options}/>)
     }
 
-    static dismiss = flutter=> {
-        if (flutter instanceof RootSiblings) {
-            flutter.destroy()
+    static dismiss = ()=> {
+        if (this._flutter instanceof RootSiblings) {
+            this._flutter.destroy()
         }
     }
 

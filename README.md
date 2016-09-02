@@ -13,11 +13,10 @@ there is one way to use flutter,calling api
 	class Demo extends Component {
 
     componentDidMount() {
+        const options={container:<Text>this is fluter view</Text>,onPress:()=>Flutter.dismiss()}
         setTimeout(()=> {
-        	const options={container:<Text>this is a fluter view</Text>}
-            const flutter = Flutter.move(options)
-            setTimeout(()=>Flutter.dismiss(flutter),3000)
-        }, 1000)
+           Flutter.onMove(options)
+        }, 1000)        
     }
 
     render() {
@@ -38,10 +37,13 @@ there is one way to use flutter,calling api
     }
 	}
 
-####api for flutter 
-**Flutter.move(options):** the options for flutter view,to control what you want to flutter
+####api for flutter
 
-**Flutter.dismiss(flutter):** dismiss the view on you screen
+the view will float on your app root view
+
+**Flutter.onMove(options):** the options for flutter view,to control what you want to flutter
+
+**Flutter.dismiss():** dismiss the view on you screen,
 
 **options:**
 
