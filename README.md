@@ -69,3 +69,7 @@ the view will float on your app root view
 |onPress|func|false|when you onPress flutter,the function will execute|
 |onAnimationEnd|func|false|the animate end callback|
 |animation|string|false|animation reference [react-native-animatable](https://github.com/oblador/react-native-animatable)|
+
+**screenShot**
+
+![screenShot](https://github.com/Cocoon-break/react-native-flutter/blob/master/screenGif.gif)
