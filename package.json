@@ -1,6 +1,6 @@
 {
   "name": "react-native-flutter",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "a component flutter on react native",
   "main": "src/index.js",
   "scripts": {

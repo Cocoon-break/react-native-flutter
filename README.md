@@ -13,10 +13,22 @@ there is one way to use flutter,calling api
 	class Demo extends Component {
 
     componentDidMount() {
-        const options={container:<Text>this is fluter view</Text>,onPress:()=>Flutter.dismiss()}
+        const options = {container: <Text>this is a multiton fluter view</Text>, onPress: this.showSingleton}
         setTimeout(()=> {
-           Flutter.onMove(options)
-        }, 1000)        
+            const flutter=Flutter.onShowMultiton(options)
+            setTimeout(()=>{
+                Flutter.onDestroy(flutter)
+            },3000)
+        }, 1000)
+    }
+
+    showSingleton() {
+        let options = {
+            container: <Text>this is a singleton fluter view</Text>,
+            position: {top: 40, right: 20},
+            onPress: ()=>Flutter.onDestroy()
+        }
+        Flutter.onShowSingleton(options)
     }
 
     render() {
@@ -41,9 +53,11 @@ there is one way to use flutter,calling api
 
 the view will float on your app root view
 
-**Flutter.onMove(options):** the options for flutter view,to control what you want to flutter
+**Flutter.onShowSingleton(options):** the options for flutter view,to control what you want to flutter,if you want to destroy it on options,you should use this function
 
-**Flutter.dismiss():** dismiss the view on you screen,
+**Flutter.onShowMultiton(options):** the same to onShowSingleton,and it will return instance.
+
+**Flutter.onDestroy(flutter?):**if you use Flutter.onShowMultiton, the params of flutter must be return from Flutter.onShowMultiton,if use Flutter.onShowSingleton,the params of flutter not to pass
 
 **options:**
 

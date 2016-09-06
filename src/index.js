@@ -29,14 +29,15 @@ class FlutterView extends Component {
         onPress: PropTypes.func,
         duration: PropTypes.number,
         container: PropTypes.element.isRequired,
-        animation:PropTypes.string,
-        onAnimationEnd:PropTypes.func
+        animation: PropTypes.string,
+        onAnimationEnd: PropTypes.func
     };
     static defaultProps = {
         position: {top: positions.TOP, left: positions.LEFT},
-        animation:'bounceInRight',
-        onAnimationEnd:()=>{},
-        duration:1000
+        animation: 'bounceInRight',
+        onAnimationEnd: ()=> {
+        },
+        duration: 1000
     }
 
     container() {
@@ -73,14 +74,23 @@ class Flutter extends Component {
     static displayName = 'Flutter'
 
     _flutter = null
+    _flutterView = null
 
-    static onMove = (options = {})=> {
-        this._flutter = new RootSiblings(<FlutterView {...options}/>)
+    static onShowSingleton = (options = {})=> {
+        this._flutterView = <FlutterView {...options}/>
+        this._flutter = new RootSiblings(this._flutterView)
     }
 
-    static dismiss = ()=> {
-        if (this._flutter instanceof RootSiblings) {
-            this._flutter.destroy()
+    static onShowMultiton = (options = {})=> {
+        return new RootSiblings(<FlutterView {...options}/>)
+    }
+
+    static onDestroy = (flutter = this._flutter)=> {
+        if (flutter instanceof RootSiblings) {
+            flutter.destroy()
+            if (this._flutterView) {
+                this._flutterView = null
+            }
         }
     }
 
